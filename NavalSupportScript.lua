@@ -14,7 +14,6 @@ NavalSupport('Ship-Group-1', 'target-zone-', 5, 10, 5)
 function NavalSupport(groupName, zoneName, zoneMin, zoneMax, attacksPerZone)
 
 	local navalGroup = Group.getByName(groupName)
-	trigger.action.outTextForCoalition(coalition.side.BLUE, 'Group acquired', 5)
 	
 	if navalGroup == nil then
 		local msg = ("Naval Support " .. groupName .. " KIA!")
@@ -23,6 +22,7 @@ function NavalSupport(groupName, zoneName, zoneMin, zoneMax, attacksPerZone)
 		
 		return
 	else
+		navalGroup:getController():setOption(0, 2)
 		local i = zoneMin
 		local j = zoneMax + 1
 		while (i < j)
